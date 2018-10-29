@@ -129,7 +129,7 @@ data.forEach(element => {
 
 const m = [30, 10, 10, 10];
 const w = 1580 - m[1] - m[3];
-const h = 5500 - m[0] - m[2];
+const h = 500 - m[0] - m[2];
 
 const x = d3.scale.ordinal().rangePoints([0, w], 1);
 let y = {};
