@@ -96,8 +96,7 @@ const convertToSec = (timeString) => {
 
         number = parseInt(number);
         if (isNaN(number)) {
-            seconds = 999;
-            return;
+            return 999;
         }
         switch (index) {
             case 0:
