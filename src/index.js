@@ -90,12 +90,12 @@ import { inherits } from "util";
 })();
 
 const convertToSec = (timeString) => {
-    
+
     let seconds = 0;
     timeString.split(":").forEach((number, index) => {
 
         number = parseInt(number);
-        if(isNaN(number)){
+        if (isNaN(number)) {
             seconds = 999;
             return;
         }
@@ -128,8 +128,8 @@ data.forEach(element => {
 
 
 const m = [30, 10, 10, 10];
-const w = 960 - m[1] - m[3];
-const h = 500 - m[0] - m[2];
+const w = 1580 - m[1] - m[3];
+const h = 5500 - m[0] - m[2];
 
 const x = d3.scale.ordinal().rangePoints([0, w], 1);
 let y = {};
@@ -158,7 +158,7 @@ const init = (peeps) => {
 
     let nameDImentions = d3.keys(peeps[0]).filter(function (d) {
         return d == 'Nume' && (y[d] = d3.scale.linear()
-            .domain(d3.extent(peeps, function (p) {return +p['PS1_time'];}))
+            .domain(d3.extent(peeps, function (p) { return +p['PS1_time']; }))
             .range([h, 0]));
     });
 
@@ -188,7 +188,10 @@ const init = (peeps) => {
         .data(dimensions)
         .enter().append("svg:g")
         .attr("class", "dimension")
-        .attr("transform", function (d) { return "translate(" + fisheye(x(d)) + ")"; });
+        .attr("transform", function (d) {
+            debugger
+            return "translate(" + fisheye(x(d)) + ")";
+        });
 
     // Add an axis and title.
     g.append("svg:g")
