@@ -1,3 +1,4 @@
+require('style.css');
 import data from "data.json";
 import { inherits } from "util";
 
@@ -89,13 +90,15 @@ import { inherits } from "util";
 })();
 
 const convertToSec = (timeString) => {
-    if (timeString.indexOf(":") < 0) {
-        return NaN;
-    }
+    
     let seconds = 0;
     timeString.split(":").forEach((number, index) => {
 
-        number = +number;
+        number = parseInt(number);
+        if(isNaN(number)){
+            seconds = 999;
+            return;
+        }
         switch (index) {
             case 0:
                 // hours
@@ -146,10 +149,21 @@ const svg = d3.select("body").append("svg:svg")
 
 const init = (peeps) => {
     dimensions = d3.keys(peeps[0]).filter(function (d) {
-        return d.indexOf('_time') > -1  && (y[d] = d3.scale.linear()
-            .domain(d3.extent(peeps, function (p) { return +p[d]; }))
+        return d.indexOf('_time') > -1 && (y[d] = d3.scale.linear()
+            .domain(d3.extent(peeps, function (p) {
+                return +p[d];
+            }))
             .range([h, 0]));
     });
+
+    let nameDImentions = d3.keys(peeps[0]).filter(function (d) {
+        return d == 'Nume' && (y[d] = d3.scale.linear()
+            .domain(d3.extent(peeps, function (p) {return +p['PS1_time'];}))
+            .range([h, 0]));
+    });
+
+    // dimensions.splice(, 0, nameDImentions);
+
     // Extract the list of dimensions and create a scale for each.
     x.domain(dimensions);
 
