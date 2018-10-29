@@ -1,4 +1,4 @@
-# Lampix App Starter
+# streaja
 
 Minimal boilerplate to help get started with Lampix apps.  
 It does not assume the technologies that will be used.
@@ -13,7 +13,7 @@ It does not assume the technologies that will be used.
 ## Installation
 
 `git clone --depth=1 git@gitlab.rosoftlab.net:lampix/lampix-app-starter.git`  
-`cd lampix-app-starter`  
+`cd streaja`  
 `npm install`
 
 If you're not improving the boilerplate, but rather starting a new app, go ahead and remove the `.git` folder.
